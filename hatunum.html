@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Seninle Her Şey Güzel</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #fff0f5;
+      color: #333;
+      overflow-x: hidden;
+    }
+
+    header {
+      background: rgba(255, 111, 145, 0.9);
+      color: white;
+      padding: 2rem;
+      text-align: center;
+      position: relative;
+    }
+
+    section {
+      padding: 2rem;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    .photo {
+      text-align: center;
+      margin: 2rem 0;
+    }
+
+    .photo img {
+      width: 80%;
+      max-width: 400px;
+      border-radius: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    .date-block {
+      background: #ffe6ec;
+      padding: 1rem;
+      border-left: 4px solid #ff6f91;
+      margin: 1rem 0;
+      border-radius: 10px;
+    }
+
+    .quote {
+      font-style: italic;
+      text-align: center;
+      margin: 2rem 0;
+      color: #555;
+    }
+
+    .counter-title {
+      text-align: center;
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-top: 3rem;
+      text-transform: uppercase;
+    }
+
+    .counter {
+      font-size: 2.5rem;
+      text-align: center;
+      font-weight: bold;
+      color: #ff3f6c;
+      margin-bottom: 2rem;
+    }
+
+    footer {
+      background: #ff6f91;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      margin-top: 3rem;
+    }
+
+    /* Buton stili */
+    .music-btn {
+      font-size: 1.2rem;
+      padding: 0.8rem 1.5rem;
+      background-color: #fff;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      color: #ff3f6c;
+      font-weight: bold;
+    }
+
+    /* Kalp animasyonları */
+    .heart {
+      position: fixed;
+      top: -50px;
+      font-size: 2rem;
+      animation: fall 8s linear infinite;
+      color: #ff6f91;
+      opacity: 0.6;
+    }
+
+    @keyframes fall {
+      0% { transform: translateY(0) rotate(0deg); }
+      100% { transform: translateY(100vh) rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <button onclick="toggleMusic()" class="music-btn">AŞKIMIZA ÖZEL ŞARKI 🎵</button>
+    <p style="margin-top: 1rem;">Seni seviyorum, iyi ki varsın... 💖</p>
+    <audio id="loveSong" src="sarki.mp3" loop></audio>
+  </header>
+
+  <!-- Kalp animasyonları -->
+  <div class="heart" style="left: 10%;">❤️</div>
+  <div class="heart" style="left: 25%;">💕</div>
+  <div class="heart" style="left: 40%;">💗</div>
+  <div class="heart" style="left: 60%;">💖</div>
+  <div class="heart" style="left: 75%;">❤️</div>
+
+  <section>
+    <div class="photo">
+      <img src="resim1.jpg" alt="İkinizin Fotoğrafı" />
+    </div>
+
+    <div class="date-block">
+      <h3>Tanışma Tarihimiz: 26.02.2024 – Saat 21:15 💖</h3>
+    </div>
+
+    <div class="date-block">
+      <h3>Sevgili Olma Tarihimiz: 29.02.2024 💖</h3>
+    </div>
+
+    <div class="photo">
+      <img src="resim2.png" alt="Güzel Bir Anı" />
+    </div>
+
+    <div class="date-block">
+      <h3>İlk Buluşma Tarihimiz: 26 Mayıs – Düğün Gecesi 💃</h3>
+      <p>Üzerinde: Siyah bir elbise, siyah topuklu ayakkabı 👠</p>
+    </div>
+
+    <div class="counter-title">KAÇ GÜN ÖNCE SEVGİLİ OLDUK?</div>
+    <div class="counter" id="loveDays">Hesaplanıyor...</div>
+
+    <div class="counter-title">BULUŞMAMIZIN ÜZERİNDEN KAÇ GÜN GEÇTİ?</div>
+    <div class="counter" id="meetDays">Hesaplanıyor...</div>
+
+    <div class="date-block">
+      <h3>Sana Söylemek İstediğim...</h3>
+      <p>Sana söylemek istediğim o kadar çok şey var ki, hangisinden başlasam bilmiyorum... Ama sanırım en başta şunu bilmeni istiyorum: Sen hayatıma girdiğin günden beri her şey bambaşka bir hâl aldı. Günümün en güzel anı seninle geçen zaman oldu, gecemin en huzurlu anı ise seni düşünerek uykuya dalmak… Gözlerine baktığımda kayboluyorum, ama bu kayboluş öyle güzel ki; içinde sevgi, güven ve huzur var. Bazen gülüşünü düşünüyorum sessizce, sonra içim ısınıyor... Belki kelimeler yetersiz kalır sana olan sevgimi anlatmaya ama kalbim her saniye seninle dolup taşıyor. Yanımda olmasan bile içimdeki yerin hep sıcak, hep seninle. Seni kelimelerden çok daha derin bir şekilde seviyorum. Bir gün değil bir ömür seni istiyorum...</p>
+    </div>
+  </section>
+
+<footer>
+  <p>Sana olan sevgim her şeye bedel olacak yavrum 💗</p>
+</footer>
+
+  <!-- Sayaçlar ve müzik -->
+  <script>
+    function calculateDays(dateString) {
+      const today = new Date();
+      const startDate = new Date(dateString);
+      const diffTime = today - startDate;
+      const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+      return diffDays;
+    }
+
+    document.getElementById("loveDays").innerText =
+      calculateDays("2024-02-29") + " gün oldu 💖";
+
+    document.getElementById("meetDays").innerText =
+      calculateDays("2025-05-20") + " gün geçti 💫";
+
+    const song = document.getElementById("loveSong");
+
+    function toggleMusic() {
+      if (song.paused) {
+        song.play();
+      } else {
+        song.pause();
+      }
+    }
+  </script>
+</body>
+</html>
